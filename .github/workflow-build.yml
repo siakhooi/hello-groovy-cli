@@ -1,0 +1,9 @@
+name: Build and Test on Push
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  gradle-build:
+    uses: ./.github/gradle-build.yml
