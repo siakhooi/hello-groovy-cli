@@ -6,4 +6,4 @@ on:
 
 jobs:
   gradle-build:
-    uses: ./.github/gradle-build.yml
+    uses: ./.github/workflows/gradle-build.yml
