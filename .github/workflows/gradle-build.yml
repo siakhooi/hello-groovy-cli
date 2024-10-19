@@ -15,3 +15,8 @@ jobs:
           name: distributionsZip
           path: |
             ./app/build/distributions/app.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fatJar
+          path: |
+            ./app/build/libs/app-all.jar
