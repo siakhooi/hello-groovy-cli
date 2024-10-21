@@ -1,0 +1,13 @@
+name: Deployment
+on:
+  release:
+    types: [created]
+
+jobs:
+  gradle-build:
+    uses: ./.github/workflows/gradle-build.yml
+  release-assets:
+    needs: build
+    uses: ./.github/workflows/deploy-github-release-assets.yml
+    secrets:
+      TOKEN_TO_UPLOAD_ASSETS: ${{ secrets.TOKEN_TO_UPLOAD_ASSETS }}

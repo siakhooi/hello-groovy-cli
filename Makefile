@@ -1,7 +1,11 @@
 verify: clean build deb
 
-setversion:
+set-version:
 	scripts/set-version.sh
+git-commit-and-push:
+	scripts/git-commit-and-push.sh
+create-release:
+	scripts/create-release.sh
 deb:
 	gradle buildAppDeb
 	dpkg-deb -c $$(ls hello-groovy/build/distributions/hello-groovy_*_amd64.deb)

@@ -52,7 +52,7 @@ task buildAppDeb(type: Deb) {
 
         into '/usr'
 
-        from("build/libs/hello-groovy-0.0.2-all.jar") {
+        from("build/libs/hello-groovy-0.0.3-all.jar") {
             into 'share/hello-groovy'
         }
 
