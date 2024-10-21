@@ -14,9 +14,15 @@ jobs:
         with:
           name: distributionsZip
           path: |
-            ./app/build/distributions/app.zip
+            ./hello-groovy/build/distributions/hello-groovy-*.zip
       - uses: actions/upload-artifact@v4
         with:
           name: fatJar
           path: |
-            ./app/build/libs/app-all.jar
+            ./hello-groovy/build/libs/hello-groovy-*-all.jar
+      - run: ./gradlew buildAppDeb
+      - uses: actions/upload-artifact@v4
+        with:
+          name: debFile
+          path: |
+            ./hello-groovy/build/distributions/hello-groovy_*_amd64.deb
