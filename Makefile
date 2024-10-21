@@ -1,10 +1,12 @@
 verify: clean build deb
 
+setversion:
+	scripts/set-version.sh
 deb:
 	gradle buildAppDeb
-	dpkg-deb -c hello-groovy/build/distributions/hello-groovy_1.0.2_amd64.deb
+	dpkg-deb -c $$(ls hello-groovy/build/distributions/hello-groovy_*_amd64.deb)
 install:
-	apt install ./hello-groovy/build/distributions/hello-groovy_1.0.2_amd64.deb
+	apt install $$(ls hello-groovy/build/distributions/hello-groovy_*_amd64.deb)
 
 uninstall:
 	apt remove hello-groovy -y
