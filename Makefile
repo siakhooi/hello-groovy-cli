@@ -7,15 +7,16 @@ git-commit-and-push:
 create-release:
 	scripts/create-release.sh
 deb:
-	gradle buildAppDeb
-	dpkg-deb -c $$(ls hello-groovy/build/distributions/hello-groovy_*_amd64.deb)
+	./scripts/build-deb.sh
+	dpkg-deb -c $$(ls hello-groovy_*_amd64.deb)
 install:
-	apt install $$(ls hello-groovy/build/distributions/hello-groovy_*_amd64.deb)
+	apt install $$(ls hello-groovy_*_amd64.deb)
 
 uninstall:
 	apt remove hello-groovy -y
 clean:
 	 ./gradlew clean
+	 rm -f *.deb *.sha256sum *.sha512sum
 build:
 	./gradlew build
 run:
