@@ -48,11 +48,11 @@ task buildAppDeb(type: Deb) {
         distribution packageDistribution
         packageDescription 'Hello groovy POC for cli'
 
-        requires 'default-jre-headless' or 'openjdk-21-jre-headless'
+        requires 'default-jre-headless'
 
         into '/usr'
 
-        from("build/libs/hello-groovy-0.2.0-all.jar") {
+        from("build/libs/hello-groovy-0.3.0-all.jar") {
             into 'share/hello-groovy'
         }
 
@@ -60,6 +60,28 @@ task buildAppDeb(type: Deb) {
             into 'bin'
             fileMode 0755
         }
+}
+// create a task to build rpm file
+task buildAppRpm(type: Rpm) {
+    arch 'noarch'
+    os LINUX
+    maintainer packageMaintainer
+    uploaders packageUploaders
+    url packageUrl
+    distribution packageDistribution
+    packageDescription 'Hello groovy POC for cli'
+    requires 'jre-headless'
+
+    into '/usr'
+
+    from("build/libs/hello-groovy-0.3.0-all.jar") {
+        into 'share/hello-groovy'
+    }
+
+    from('src/scripts') {
+        into 'bin'
+        fileMode 0755
+    }
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

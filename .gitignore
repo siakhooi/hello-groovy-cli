@@ -7,3 +7,4 @@ build
 *.deb
 *.sha256sum
 *.sha512sum
+*.rpm

@@ -9,6 +9,9 @@ create-release:
 deb:
 	./scripts/build-deb.sh
 	dpkg-deb -c $$(ls hello-groovy_*_amd64.deb)
+rpm:
+	rpm --eval '%{_arch}'
+	./scripts/build-rpm.sh
 install:
 	apt install $$(ls hello-groovy_*_amd64.deb)
 
@@ -16,7 +19,7 @@ uninstall:
 	apt remove hello-groovy -y
 clean:
 	 ./gradlew clean
-	 rm -f *.deb *.sha256sum *.sha512sum
+	 rm -f *.deb *.sha256sum *.sha512sum *.rpm
 build:
 	./gradlew build
 run:
