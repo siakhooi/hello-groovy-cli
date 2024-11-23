@@ -20,6 +20,7 @@ plugins {
 
     id 'jacoco'
 
+    id "org.sonarqube" version "5.1.0.4882"
 }
 
 test {
@@ -27,6 +28,9 @@ test {
 }
 jacocoTestReport {
     dependsOn test // tests are required to run before generating the report
+    reports {
+        xml.required = true
+    }
 }
 
 
@@ -109,4 +113,12 @@ application {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+sonar {
+  properties {
+    property "sonar.projectKey", "siakhooi_hello-groovy-cli"
+    property "sonar.organization", "siakhooi"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }

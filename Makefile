@@ -22,6 +22,8 @@ clean:
 	 rm -f *.deb *.sha256sum *.sha512sum *.rpm
 build:
 	./gradlew build
+sonar:
+	./gradlew sonar
 run:
 	./gradlew run
 runjar:
