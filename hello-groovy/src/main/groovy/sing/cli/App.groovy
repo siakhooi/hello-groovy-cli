@@ -5,7 +5,7 @@ package sing.cli
 
 class App {
     String getGreeting() {
-        return 'Hello Groovy (and Sonar?)!!!'
+        return 'Hello Groovy (and Sonar??)!!!'
     }
 
     static void main(String[] args) {
