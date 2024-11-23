@@ -1,4 +1,4 @@
 #!/bin/bash
 
-readonly VERSION=0.3.0
+readonly VERSION=0.3.1
 java -jar /usr/share/hello-groovy/hello-groovy-${VERSION}-all.jar "$@"
