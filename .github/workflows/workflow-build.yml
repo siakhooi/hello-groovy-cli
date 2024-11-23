@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - "*"
+  workflow_call:
+    secrets:
+      SONAR_TOKEN:
+        required: true
 
 jobs:
   gradle-build:

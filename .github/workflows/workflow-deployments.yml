@@ -5,7 +5,9 @@ on:
 
 jobs:
   build:
-    uses: ./.github/workflows/gradle-build.yml
+    uses: ./.github/workflows/workflow-build.yml
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   release-assets:
     needs: build
     uses: ./.github/workflows/deploy-github-release-assets.yml
