@@ -8,3 +8,7 @@ build
 *.sha256sum
 *.sha512sum
 *.rpm
+
+hello-groovy/bin
+bats-test-result*.log
+test_helper

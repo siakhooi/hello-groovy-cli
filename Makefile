@@ -12,11 +12,17 @@ deb:
 rpm:
 	rpm --eval '%{_arch}'
 	./scripts/build-rpm.sh
-install:
-	apt install $$(ls hello-groovy_*_amd64.deb)
+	rpm -ql $$(ls hello-groovy_*.rpm)
 
-uninstall:
+install-deb:
+	apt install -y ./$$(ls hello-groovy_*_amd64.deb)
+uninstall-deb:
 	apt remove hello-groovy -y
+bats-prepare:
+	scripts/bats-prepare.sh
+bats-run:
+	scripts/bats-run.sh
+
 clean:
 	 ./gradlew clean
 	 rm -f *.deb *.sha256sum *.sha512sum *.rpm
