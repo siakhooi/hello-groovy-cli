@@ -1,0 +1,18 @@
+name: Test With Bats in Ubuntu
+
+on: workflow_call
+
+jobs:
+  bats-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: ./scripts/bats-prepare-deb.sh
+      - run: ./scripts/bats-run.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bats-test-results
+          path: |
+            ./bats-test-*

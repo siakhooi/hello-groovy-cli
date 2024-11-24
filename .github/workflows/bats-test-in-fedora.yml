@@ -1,0 +1,19 @@
+name: Test With Bats in Fedora
+
+on: workflow_call
+
+jobs:
+  bats-test:
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: ./scripts/bats-prepare-rpm.sh
+      - run: ./scripts/bats-run.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bats-test-results
+          path: |
+            ./bats-test-*

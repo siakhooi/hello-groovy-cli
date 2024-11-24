@@ -16,3 +16,9 @@ jobs:
     uses: ./.github/workflows/quality-sonarcloud.yml
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  bats-test-deb:
+    needs: gradle-build
+    uses: ./.github/workflows/bats-test-in-ubuntu.yml
+  bats-test-rpm:
+    needs: gradle-build
+    uses: ./.github/workflows/bats-test-in-fedora.yml
