@@ -12,14 +12,21 @@ deb:
 rpm:
 	rpm --eval '%{_arch}'
 	./scripts/build-rpm.sh
-	rpm -ql $$(ls hello-groovy_*.rpm)
+	rpm -ql $$(ls hello-groovy-*.rpm)
 
 install-deb:
 	apt install -y ./$$(ls hello-groovy_*_amd64.deb)
 uninstall-deb:
 	apt remove hello-groovy -y
-bats-prepare:
-	scripts/bats-prepare.sh
+install-rpm:
+	yum install -y $$(ls hello-groovy-*.rpm)
+uninstall-rpm:
+	yum remove hello-groovy -y
+
+bats-prepare-deb:
+	scripts/bats-prepare-deb.sh
+bats-prepare-rpm:
+	scripts/bats-prepare-rpm.sh
 bats-run:
 	scripts/bats-run.sh
 
